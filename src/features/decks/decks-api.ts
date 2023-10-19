@@ -13,6 +13,7 @@ export const decksAPI = {
   }
 }
 
+
 export type FetchDecksResponse = {
 	items: Deck[];
 	pagination: RootObjectPagination;
