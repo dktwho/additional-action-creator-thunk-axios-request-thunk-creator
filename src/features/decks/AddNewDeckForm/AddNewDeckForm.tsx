@@ -1,11 +1,15 @@
 import s from './AddNewPostForm.module.css'
 import { useForm } from 'react-hook-form'
+import { AddDeckTC } from '../decks-thunks.ts'
+import { useAppDispatch } from '../../../app/store.ts'
 
 type FormValues = {
   name: string
 }
 
 export const AddNewDeckForm = () => {
+
+  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,
@@ -18,6 +22,7 @@ export const AddNewDeckForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log(data)
+    dispatch(AddDeckTC(data.name))
   }
 
   return (
@@ -32,11 +37,11 @@ export const AddNewDeckForm = () => {
               message: 'Name must be longer than or equal to 3 characters',
             },
           })}
-          autoComplete="off"
+          autoComplete='off'
         />
         <p className={s.errorMessage}>{errors.name && errors.name.message}</p>
       </label>
-      <button type="submit">Add new deck</button>
+      <button type='submit'>Add new deck</button>
     </form>
   )
 }
