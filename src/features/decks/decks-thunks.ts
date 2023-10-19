@@ -9,7 +9,7 @@ export const FetchDecksTC = () => (dispatch: Dispatch) => {
 }
 
 export const AddDeckTC = (name: string) => (dispatch: Dispatch) => {
-  decksAPI.addDeck(name).then((res) => {
+  return decksAPI.addDeck(name).then((res) => {
     dispatch(addDeckAC(res.data))
   })
 }
