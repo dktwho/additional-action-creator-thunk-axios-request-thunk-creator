@@ -14,9 +14,17 @@ export const decksAPI = {
   addDeck(name: string) {
     return instance.post<Deck>(`decks`, { name })
   },
-  removeDeck(id:string ) {
+  removeDeck(id: string) {
     return instance.delete(`decks/${id}`)
-  }
+  },
+  updateDeck({ id, name }: UpdateDeckParams) {
+    return instance.patch(`decks/${id}`, { name })
+  },
+}
+
+export type UpdateDeckParams = {
+  id: string
+  name: string
 }
 
 

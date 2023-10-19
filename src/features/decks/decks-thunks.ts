@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
-import { decksAPI } from './decks-api.ts'
-import { removeDeckAC, setDecksAC } from './decks-reducer.ts'
+import { decksAPI, UpdateDeckParams } from './decks-api.ts'
+import { removeDeckAC, setDecksAC, updateDeckAC } from './decks-reducer.ts'
 import { AppDispatch } from '../../app/store.ts'
 
 export const FetchDecksTC = () => (dispatch: Dispatch) => {
@@ -19,5 +19,11 @@ export const AddDeckTC = (name: string) => (dispatch: AppDispatch) => {
 export const RemoveDeckTC = (id: string) => (dispatch: Dispatch) => {
   decksAPI.removeDeck(id).then(() => {
     dispatch(removeDeckAC(id))
+  })
+}
+
+export const UpdateDeckTC = (params: UpdateDeckParams) => (dispatch: Dispatch) => {
+  decksAPI.updateDeck(params).then((res) => {
+    dispatch(updateDeckAC(res.data))
   })
 }
