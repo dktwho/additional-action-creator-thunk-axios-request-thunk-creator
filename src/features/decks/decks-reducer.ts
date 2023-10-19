@@ -12,13 +12,12 @@ type DecksState = typeof initialState
 export const decksReducer = (state: DecksState = initialState, action: DecksActions): DecksState => {
   switch (action.type) {
     case 'DECKS/SET-DECKS': {
-      return state
-    }
-    default : {
       return { ...state, decks: action.decks }
     }
+    default : {
+      return state
+    }
   }
-  return state
 }
 
 type DecksActions = ReturnType<typeof setDecksAC>
